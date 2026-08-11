@@ -1,0 +1,39 @@
+import mongoose from "mongoose";
+const userSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: [true, "Name is required"],
+  },
+  email: {
+    type: String,
+    required: [true, "Email is required"],
+    unique: true
+  },
+  password: {
+    type: String,
+    required: [true, "Password is required"],
+  },
+  username: {
+    type: String,
+    required: [true, "Username is required"],
+  },
+  dob: {
+    type: Date,
+    required: [true, "Date of Birth is required"],
+  },
+  gender: {
+    type: Date,
+    enum: ["Male", "Female", "Other"],
+    required: [true, "Gender is required"],
+  },
+  phone: {
+    type: String,
+    required: [true, "Phone number is required"],
+  },
+  address: {
+    type: String,
+    required: [true, "Address is required"],
+  },
+});
+const userModel = mongoose.model("User", userSchema);
+export default userModel;
