@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
     required: [true, "Date of Birth is required"],
   },
   gender: {
-    type: Date,
+    type: String,
     enum: ["Male", "Female", "Other"],
     required: [true, "Gender is required"],
   },
@@ -34,6 +34,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Address is required"],
   },
-});
+  isDeleted: {
+    type: Boolean,
+    default: false,
+  },
+
+}, { timestamps: true });
 const userModel = mongoose.model("User", userSchema);
 export default userModel;
