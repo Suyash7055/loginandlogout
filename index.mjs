@@ -34,8 +34,7 @@ mongoose.connect(config.mongoDB)
   .catch((err) => {
     console.error("Error connecting to MongoDB:", err);
   });
-mongoose.set('debug', true);
-'debug', true
+
 
 app.use("/", router);
 
