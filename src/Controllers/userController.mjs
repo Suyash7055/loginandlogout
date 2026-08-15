@@ -89,9 +89,18 @@ const getUser = async (req, res) => {
     return res.status(500).send({ message: "failed", error: "Internal server error" });
   }
 }
-export { registerUser, getUser, login };
-
-
-
+const updateUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await userModel.findByIdAndUpdate(id, update, { new: true });
+    if (!user) {
+      return res.status(404).send({ message: "failed", error: "User not found" });
+    }
+    return res.status(200).send({ message: "success", data: user });
+  } catch (error) {
+    return res.status(500).send({ message: "failed", error: "Internal server error" });
+  }
+}
+export { registerUser, getUser, login, updateUser };
 
 
